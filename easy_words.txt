@@ -1,0 +1,10 @@
+apple
+bus
+car
+cat
+frog
+dog
+tree
+weed
+road
+fish
