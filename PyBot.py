@@ -1,5 +1,6 @@
 import hangman
 import tictactoe
+import random
 
 
 def handle_greeting() -> None:
@@ -25,6 +26,8 @@ def handle_weather() -> None:
         print("You should definitely wear a jacket!")
     elif weather_input in ["warm", "hot", "sunny"]:
         print("No jacket needed, enjoy the weather!")
+    elif weather_input in ["rainy", "snowy"]:
+        print("You should bring an umbrella or wear something warm!")
     else:
         print("I'll assume it's mild weather. A light jacket might be a good idea!")
 
@@ -38,10 +41,30 @@ def handle_joke() -> None:
 
 def handle_help() -> None:
     """
-        Display help information about available commands.
+    Display help information about available commands.
     """
-    print("You can say hello, ask about the weather, ask for a joke, or type quit.")
+    print("Here are the commands you can use:")
+    print("- hello")
+    print("- weather")
+    print("- joke")
+    print("- hangman")
+    print("- tic tac toe")
+    print("- quote")
+    print("- help")
+    print("- quit")
 
+
+def handle_quote() -> None:
+    """
+    Give the user a motivational quote.
+    """
+    quotes = [
+        "Keep going, you are doing better than you think.",
+        "Every small step counts.",
+        "Practice makes progress,",
+        "Stay focused and keep learning."
+    ]
+    print(random.choice(quotes))
 
 def handle_unknown() -> None:
     """
@@ -76,6 +99,8 @@ def process_input(user_input: str) -> bool:
     
     elif "hello" in user_input or "hi" in user_input or "hey" in user_input:
         handle_greeting()
+    elif "quote" in user_input or "motivation" in user_input:
+        handle_quote()
     
     elif "how are you" in user_input:
         handle_how_are_you()
@@ -108,7 +133,7 @@ def main() -> None:
     """
         Main function to run PyBot.
     """
-    print("Hello! I'm PyBot. Type 'quit' to exit.")
+   print("Hello! I'm PyBot. Type 'help' to see what I can do, or type 'quit' to exit.")
     
     while True:
         user_input = input("").lower().strip() # Makes the input easier to work with by converting to lowercase and removing extra spaces
